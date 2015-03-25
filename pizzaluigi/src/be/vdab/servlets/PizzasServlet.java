@@ -1,10 +1,9 @@
 package be.vdab.servlets;
 
 import java.io.IOException;
-import java.math.BigDecimal;
-//import java.util.Arrays;
-import java.util.LinkedHashMap;
-import java.util.Map;
+//import java.math.BigDecimal;
+//import java.util.LinkedHashMap;
+//import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import javax.servlet.ServletException;
@@ -14,9 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import be.vdab.dao.PizzaDAO;
-import be.vdab.entities.Pizza;
+//import be.vdab.entities.Pizza;
 
-//test
 @WebServlet("/pizzas.htm")
 public class PizzasServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -39,7 +37,7 @@ public class PizzasServlet extends HttpServlet {
 		 * BigDecimal.valueOf(4), false))); /// een list declareren
 		 */
 
-		Map<Long, Pizza> pizzas = new LinkedHashMap<>(); // keys zijn
+		/*Map<Long, Pizza> pizzas = new LinkedHashMap<>(); // keys zijn
 															// pizzanummers
 		pizzas.put(12L,
 				new Pizza(12, "Prosciutto", BigDecimal.valueOf(4), true));
@@ -50,10 +48,10 @@ public class PizzasServlet extends HttpServlet {
 				false));
 
 		request.setAttribute("pizzas", pizzas);
-		request.getRequestDispatcher(VIEW).forward(request, response);
+		request.getRequestDispatcher(VIEW).forward(request, response);*/  // of volgende
 		
 		((AtomicInteger) this.getServletContext().getAttribute(PIZZAS_REQUESTS)).incrementAndGet();
-				request.setAttribute("pizzas", pizzaDAO.findAll());
-				request.getRequestDispatcher(VIEW).forward(request, response);
+		request.setAttribute("pizzas", pizzaDAO.findAll());
+		request.getRequestDispatcher(VIEW).forward(request, response);
 	}
 }

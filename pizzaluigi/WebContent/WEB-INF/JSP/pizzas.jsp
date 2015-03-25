@@ -9,7 +9,7 @@
 <link rel='stylesheet' href='styles/default.css'> -->
 
 <c:import url='/WEB-INF/JSP/head.jsp'>
-	<c:param name='title' value="Pizza's" /> 
+	<c:param name='title' value="Pizza's" />
 </c:import>
 
 </head>
@@ -22,22 +22,27 @@
 		</c:forEach>
 	</h1>
 	<ul class='zebra'>
-		<c:forEach var='entry' items='${pizzas}'>
+		<%-- <c:forEach var='entry' items='${pizzas}'>
 			<li>${entry.key}:<c:out value='${entry.value.naam}' />
-				${entry.value.prijs}&euro; <%-- c: voor vertaalslag & p29 --%> <%-- <c:choose>
-				<c:when test='${entry.value.pikant}'>
-					pikant
-				</c:when>
-				<c:otherwise>
-					niet pikant
-				</c:otherwise>
-			</c:choose> --%>
-			 ${entry.value.pikant ? "pikant" : "niet pikant"} 
-			 <c:url	value='/pizzas/detail.htm' var='detailURL'>
+				${entry.value.prijs}&euro; c: voor vertaalslag & p29 
+				
+				${entry.value.pikant ? "pikant" : "niet pikant"} <c:url
+					value='/pizzas/detail.htm' var='detailURL'>
 					<c:param name='id' value='${entry.key}' />
 				</c:url> <a href='${detailURL}'>Detail</a>
 			</li>
+		</c:forEach> --%>
+
+		<c:forEach var='pizza' items='${pizzas}'>
+			<li>${pizza.id}:<c:out value='${pizza.naam}' /> ${pizza.prijs}
+				&euro; ${pizza.pikant ? "pikant" : "niet pikant"} <c:url
+					value='/pizzas/detail.htm' var='detailURL'>
+					<c:param name='id' value="${pizza.id}" />
+				</c:url> <a href="<c:out value='${detailURL}'/>">Detail</a>
+			</li>
 		</c:forEach>
+
+
 	</ul>
 </body>
 </html>
