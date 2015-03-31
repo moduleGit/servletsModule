@@ -6,19 +6,23 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 import be.vdab.dao.PizzaDAO;
 import be.vdab.entities.Pizza;
 
 @WebServlet("/pizzas/toevoegen.htm")
+@MultipartConfig
 public class PizzaToevoegenServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final String VIEW = "/WEB-INF/JSP/pizzatoevoegen.jsp";
-	private static final String SUCCESS_VIEW = "/WEB-INF/JSP/pizzas.jsp";
+//	private static final String SUCCESS_VIEW = "/WEB-INF/JSP/pizzas.jsp";
+	private static final String REDIRECT_URL = "%s/pizzas.htm";
 	private final PizzaDAO pizzaDAO = new PizzaDAO();
 
 	@Override
@@ -30,6 +34,9 @@ public class PizzaToevoegenServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException { // (2)
+		
+		request.setCharacterEncoding("UTF-8");
+		
 		Map<String, String> fouten = new HashMap<>();
 		String naam = request.getParameter("naam");
 		if (!Pizza.isNaamValid(naam)) {
@@ -44,7 +51,7 @@ public class PizzaToevoegenServlet extends HttpServlet {
 		} catch (NumberFormatException ex) {
 			fouten.put("prijs", "tik een getal");
 		}
-		if (fouten.isEmpty()) {
+		/*if (fouten.isEmpty()) {
 			boolean pikant = "pikant".equals(request.getParameter("pikant"));
 			pizzaDAO.create(new Pizza(naam, prijs, pikant));
 			request.setAttribute("pizzas", pizzaDAO.findAll()); 				// (3)
@@ -53,12 +60,28 @@ public class PizzaToevoegenServlet extends HttpServlet {
 		} else {
 			request.setAttribute("fouten", fouten);
 			request.getRequestDispatcher(VIEW).forward(request, response);
+		}*/
+		
+		Part fotoPart = request.getPart("foto"); //(1)
+		boolean fotoIsOpgeladen = fotoPart != null && fotoPart.getSize() != 0; //(2)
+		if (fotoIsOpgeladen && ! fotoPart.getContentType().contains("jpeg")) {
+		fouten.put("foto", "geen JPEG foto");
 		}
+		if (fouten.isEmpty()) {
+		boolean pikant = "pikant".equals(request.getParameter("pikant"));
+		Pizza pizza = new Pizza(naam, prijs, pikant);
+		pizzaDAO.create(pizza);
+		if (fotoIsOpgeladen) {
+		String pizzaFotosPad =
+		this.getServletContext().getRealPath("/pizzafotos"); //(3)
+		fotoPart.write(String.format("%s/%d.jpg", pizzaFotosPad, pizza.getId())); //(4)
+		}
+		response.sendRedirect(String.format(REDIRECT_URL, request.getContextPath()));
+		} else {
+		request.setAttribute("fouten", fouten);
+		request.getRequestDispatcher(VIEW).forward(request, response);
+		}
+		
+		
 	}
 }
-
-//(1) De gebruiker doet een GET request naar de servlet om de lege HTML form te zien.
-//(2) De gebruiker tikt in die form de gegevens van de nieuwe pizza en submit de form.
-//De browser doet op dat moment een POST request naar de servlet.
-//(3) De nieuwe pizza is toegevoegd aan de database. Je leest alle pizza’s uit de database
-//(ook de nieuwe pizza) en toont die aan de gebruiker.
