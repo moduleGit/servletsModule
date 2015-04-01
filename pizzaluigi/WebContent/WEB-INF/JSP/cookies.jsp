@@ -15,6 +15,6 @@
 			type='submit' value='Onthoud me'>
 	</form>
 	
-	<label><span>aangemaakte cookie noemt: ${cookie.naam.value}</span></label>  <%--zelf toegevoegd--%>
+	<label>Het aangemaakte cookie noemt: <span>${cookie.naam.value}</span></label>  <%--zelf toegevoegd--%>
 </body>
 </html>
