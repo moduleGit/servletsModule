@@ -2,7 +2,7 @@ package be.vdab.servlets;
 
 import java.io.IOException;
 import java.util.Enumeration;
-import java.util.HashMap;
+//import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 

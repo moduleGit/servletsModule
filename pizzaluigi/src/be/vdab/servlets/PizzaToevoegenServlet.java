@@ -35,7 +35,7 @@ public class PizzaToevoegenServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException { // (2)
 		
-		request.setCharacterEncoding("UTF-8");
+//		request.setCharacterEncoding("UTF-8");	// via filter
 		
 		Map<String, String> fouten = new HashMap<>();
 		String naam = request.getParameter("naam");
