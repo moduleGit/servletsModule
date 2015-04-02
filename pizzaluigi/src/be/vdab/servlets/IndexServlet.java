@@ -68,9 +68,13 @@ public class IndexServlet extends HttpServlet {
 						: uur >= 12 && uur < 18 ? "Goede middag"
 								: "Goede avond");
 		request.setAttribute("zaakvoerder", zaakvoerder);
+		request.setAttribute("nu", Calendar.getInstance().getTime());
+		request.setAttribute("aantalPizzasVerkocht", 23000);
 		request.getRequestDispatcher(VIEW).forward(request, response);
 
 		((AtomicInteger) this.getServletContext().getAttribute(INDEX_REQUESTS))
 		.incrementAndGet();
+		
+		
 	}
 }
