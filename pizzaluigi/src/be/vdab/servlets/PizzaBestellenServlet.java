@@ -6,12 +6,14 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.annotation.Resource;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.sql.DataSource;
 
 import be.vdab.dao.PizzaDAO;
 import be.vdab.entities.Pizza;
@@ -21,7 +23,7 @@ public class PizzaBestellenServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final String VIEW = "/WEB-INF/JSP/pizzabestellen.jsp";
 	private static final String MANDJE = "mandje";
-	private final PizzaDAO pizzaDAO = new PizzaDAO();
+	private final transient PizzaDAO pizzaDAO = new PizzaDAO();
 
 	@Override
 	protected void doGet(HttpServletRequest request,
@@ -61,5 +63,9 @@ public class PizzaBestellenServlet extends HttpServlet {
 		}
 		response.sendRedirect(response.encodeRedirectURL(request
 				.getRequestURI()));
+	}
+	@Resource(name = PizzaDAO.JNDI_NAME)
+	void setDataSource(DataSource dataSource) {
+		pizzaDAO.setDataSource(dataSource);
 	}
 }
