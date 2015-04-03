@@ -40,6 +40,12 @@ public class CookieServlet extends HttpServlet {
 				}
 			}
 		}
+		
+		String locale = request.getParameter("locale");
+		if (locale != null) {
+		request.getSession().setAttribute("locale", locale);
+		}
+		
 		request.getRequestDispatcher(VIEW).forward(request, response);
 	}
 }

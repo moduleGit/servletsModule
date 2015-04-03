@@ -1,5 +1,6 @@
 <%@page contentType='text/html' pageEncoding='UTF-8' session='false'%>
 <%@taglib prefix='c' uri='http://java.sun.com/jsp/jstl/core'%>
+<%@taglib uri='http://vdab.be/tags' prefix='vdab'%>
 <!doctype html>
 <html lang='nl'>
 <head>
@@ -8,13 +9,10 @@
 <meta name='viewport' content='width=device-width,initial-scale=1'>
 <link rel='stylesheet' href='styles/default.css'> -->
 
-<c:import url='/WEB-INF/JSP/head.jsp'>
-	<c:param name='title' value="Pizza's" />
-</c:import>
-
+<vdab:head title="Pizza's"/>
 </head>
 <body>
-	<c:import url='/WEB-INF/JSP/menu.jsp' />
+	<vdab:menu/>
 	<h1>
 		Pizza's
 		<c:forEach begin='1' end='5'>
