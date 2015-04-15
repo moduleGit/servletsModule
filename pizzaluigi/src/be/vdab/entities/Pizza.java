@@ -46,7 +46,8 @@ public class Pizza {
 
 	public static boolean isNaamValid(String naam) { // Deze static function
 	// valideert de naam zonder een Pizza instance te moeten maken (zie verder)
-		return naam != null && !naam.isEmpty();
+		return naam != null && !naam.isEmpty();     
+		//   naam.trim() voorkomt intypen van spatie dat er toch een pizza wordt aangemaakt
 	}
 
 	public void setNaam(String naam) {

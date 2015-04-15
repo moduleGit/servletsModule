@@ -8,7 +8,7 @@ public class Persoon implements Serializable {
 	private String familienaam;
 	private int aantalKinderen;
 	private boolean gehuwd;
-	private Adres adres;
+	private Adres adres;   ///genest attribuut
 	
 	public String getVoornaam() {
 		return voornaam;
@@ -34,7 +34,7 @@ public class Persoon implements Serializable {
 	public void setGehuwd(boolean gehuwd) {
 		this.gehuwd = gehuwd;
 	}
-	public String getNaam() {
+	public String getNaam() {                             // readonly attribuut
 		return voornaam + ' ' + familienaam;
 		}
 	public Adres getAdres() {

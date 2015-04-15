@@ -24,7 +24,12 @@
 <%@taglib prefix='c' uri='http://java.sun.com/jsp/jstl/core'%>
 <%@taglib prefix='fmt' uri='http://java.sun.com/jsp/jstl/fmt'%>
 <%@taglib uri='http://vdab.be/tags' prefix='vdab'%>
+
+<c:if test='${not empty sessionScope.locale}'>
+<fmt:setLocale value='${sessionScope.locale}'/> <%-- p84 --%>
+</c:if>
 <fmt:setBundle basename='resourceBundles.teksten' />
+
 <!doctype html>
 <html lang='nl'>
 <head>

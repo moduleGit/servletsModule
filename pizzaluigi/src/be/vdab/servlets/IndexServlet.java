@@ -34,7 +34,7 @@ public class IndexServlet extends HttpServlet {
 	/*
 	 * public IndexServlet() { zaakvoerder.setVoornaam("Luigi");
 	 * zaakvoerder.setFamilienaam("Peperone"); zaakvoerder.setAantalKinderen(7);
-	 * zaakvoerder.setGehuwd(true); Adres adres = new Adres();
+	 * zaakvoerder.setGehuwd(true); Adres adres = new Adres();       
 	 * adres.setStraat("Grote markt"); adres.setHuisNr("3");
 	 * adres.setPostcode(9700); adres.setGemeente("Oudenaarde");
 	 * zaakvoerder.setAdres(adres); }

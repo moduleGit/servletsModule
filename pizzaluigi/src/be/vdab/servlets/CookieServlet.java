@@ -31,6 +31,12 @@ public class CookieServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
+		
+		String locale = request.getParameter("locale");
+		if (locale != null) {
+		request.getSession().setAttribute("locale", locale);
+		}
+		
 		if (request.getCookies() != null) {
 			for (Cookie cookie : request.getCookies()) {
 				if ("naam".equals(cookie.getName())) {
@@ -41,11 +47,7 @@ public class CookieServlet extends HttpServlet {
 			}
 		}
 		
-		String locale = request.getParameter("locale");
-		if (locale != null) {
-		request.getSession().setAttribute("locale", locale);
-		}
-		
+			
 		request.getRequestDispatcher(VIEW).forward(request, response);
 	}
 }
