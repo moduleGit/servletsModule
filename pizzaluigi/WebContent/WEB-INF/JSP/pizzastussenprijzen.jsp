@@ -4,18 +4,18 @@
 <!doctype html>
 <html lang='nl'>
 <head>
-<vdab:head title='Pizzas tussen prijzen'/>
+<vdab:head title='Pizzas tussen prijzen' />
 </head>
 <body>
-	<vdab:menu/>
+	<vdab:menu />
 	<h1>Pizza's tussen prijzen</h1>
-<%-- 	<form method='get' action='<c:url value="/pizzas/tussenprijzen.htm"/>'> --%>
-		<form>
-		<label>Van prijs<span>${fouten.van}</span> 
-		<input name='van' value='${param.van}' autofocus type='number' min='0' required></label> 
-		<label>Tot prijs<span>${fouten.tot}</span>
-		<input name='tot' value='${param.tot}' type='number' min='0' required></label> 
-		<input type='submit' value='Zoeken'>
+	<%-- 	<form method='get' action='<c:url value="/pizzas/tussenprijzen.htm"/>'> --%>
+	<form>
+		<label>Van prijs<span>${fouten.van}</span> <input name='van'
+			value='${param.van}' autofocus type='number' min='0' required></label>
+		<label>Tot prijs<span>${fouten.tot}</span> <input name='tot'
+			value='${param.tot}' type='number' min='0' required></label> <input
+			type='submit' value='Zoeken'>
 	</form>
 	<c:if test='${not empty pizzas}'>
 		<ul class='zebra'>

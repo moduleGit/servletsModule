@@ -32,7 +32,5 @@ public class Adres implements Serializable {
 	}
 	public void setGemeente(String gemeente) {
 		this.gemeente = gemeente;
-	}
-
-	
+	}	
 }

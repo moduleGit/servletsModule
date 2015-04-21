@@ -37,7 +37,9 @@ public class HeadersServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
+		
 		Map<String, String> headers = new LinkedHashMap<>();
+		
 		for (Enumeration<String> headerNames = request.getHeaderNames(); headerNames
 				.hasMoreElements();) {
 			String headerName = headerNames.nextElement();

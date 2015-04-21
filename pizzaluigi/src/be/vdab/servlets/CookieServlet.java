@@ -46,8 +46,6 @@ public class CookieServlet extends HttpServlet {
 				}
 			}
 		}
-		
-			
 		request.getRequestDispatcher(VIEW).forward(request, response);
 	}
 }

@@ -24,17 +24,21 @@ public class PizzasTussenPrijzenServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		if (request.getQueryString() != null) { 			// (1)
+		if (request.getQueryString() != null) { // (1)
 			Map<String, String> fouten = new HashMap<>(); // (2)
 			BigDecimal van = null;
 			try {
-				van = new BigDecimal(request.getParameter("van"));  //casting naar BigDecimal
+				van = new BigDecimal(request.getParameter("van")); // casting
+																	// naar
+																	// BigDecimal
 			} catch (NumberFormatException ex) {
-				fouten.put("van", "tik een getal"); 		// (3)
+				fouten.put("van", "tik een getal"); // (3)
 			}
 			BigDecimal tot = null;
 			try {
-				tot = new BigDecimal(request.getParameter("tot"));  //casting naar BigDecimal
+				tot = new BigDecimal(request.getParameter("tot")); // casting
+																	// naar
+																	// BigDecimal
 			} catch (NumberFormatException ex) {
 				fouten.put("tot", "tik een getal");
 			}
@@ -47,7 +51,7 @@ public class PizzasTussenPrijzenServlet extends HttpServlet {
 		}
 		request.getRequestDispatcher(VIEW).forward(request, response);
 	}
-	
+
 	@Resource(name = PizzaDAO.JNDI_NAME)
 	void setDataSource(DataSource dataSource) {
 		pizzaDAO.setDataSource(dataSource);

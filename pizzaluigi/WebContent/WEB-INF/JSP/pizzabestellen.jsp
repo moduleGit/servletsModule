@@ -31,9 +31,9 @@
 	</c:if>
 	<script>
 		document.getElementById('toevoegform').onsubmit = function() {
-			if (!navigator.cookieEnabled) {  //(1)
+			if (!navigator.cookieEnabled) {  					//(1)
 				alert("Dit werkt enkel als cookies aanstaan");//	(2)
-				return false; //	(3)
+				return false; 								//		(3)
 			}
 			document.getElementById('toevoegknop').disabled = true;
 		};

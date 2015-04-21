@@ -27,7 +27,7 @@
 		<session-timeout>20</session-timeout>
 	</session-config>
 
-	<filter> <!-- indien @WebFilter in commentaar , bstaat vanaf servlets 3.0 -->
+	<filter> <!-- indien @WebFilter in commentaar , bestaat vanaf servlets 3.0 -->
 		<filter-name>ServletFilter</filter-name>
 		<filter-class>be.vdab.filters.ServletFilter</filter-class>
 		<init-param>
@@ -49,5 +49,4 @@
 		<exception-type>be.vdab.dao.DAOException</exception-type>
 		<location>/WEB-INF/JSP/daoexception.jsp</location>
 	</error-page>
-
 </web-app>

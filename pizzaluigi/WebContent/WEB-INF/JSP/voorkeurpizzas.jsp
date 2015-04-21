@@ -4,16 +4,17 @@
 <!doctype html>
 <html lang='nl'>
 <head>
-<vdab:head title='Voorkeurpizza’s'/>
+<vdab:head title='Voorkeurpizza’s' />
 </head>
 <body>
-	<vdab:menu/>
+	<vdab:menu />
 	<h1>Voorkeurpizza's</h1>
 	<form>
 		<ul class='zonderbolletjes'>
 			<c:forEach var='pizza' items='${pizzas}'>
-				<li><label><input type='checkbox' name='id'
-						value='${pizza.id}'> <c:out value='${pizza.naam}' /></label></li>
+				<li><label> <input type='checkbox' name='id'
+						value='${pizza.id}'> <c:out value='${pizza.naam}' />
+				</label></li>
 			</c:forEach>
 		</ul>
 		<input type='submit' value='Toon mijn keuzes'>

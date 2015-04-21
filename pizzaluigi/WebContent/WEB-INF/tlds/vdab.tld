@@ -3,6 +3,7 @@
 	xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
 	xsi:schemaLocation='http://java.sun.com/xml/ns/javaee
 	  	http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd'>
+
 	<tlib-version>1.0</tlib-version>
 	<short-name>vdab</short-name>
 	<uri>http://vdab.be/tags</uri>
@@ -14,4 +15,4 @@
 		<name>head</name>
 		<path>/WEB-INF/tags/vdab/head.tag</path>
 	</tag-file>
-	</taglib>
+</taglib>
